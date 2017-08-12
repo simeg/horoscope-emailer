@@ -8,8 +8,14 @@ def build(horoscopes):
     i = 0
     size = len(horoscopes)
     template = _format_header(HEADER)
-    for h in horoscopes:
-        template += _format_line(h.website_name, h.website_url, h.result).encode('utf-8')
+    for hs in horoscopes:
+        template += _format_line(
+            hs.get('website_name'),
+            hs.get('website_url'),
+            hs.get('result')
+        ).encode('utf-8')
+
+        # Output a divider between every horoscope
         if i != (size - 1):
             template += '<hr/>'
         i += 1
