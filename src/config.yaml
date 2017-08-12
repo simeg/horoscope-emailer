@@ -1,11 +1,6 @@
-auth:
-    username: ''
-    password: ''
-
 email:
     subject: 'Dagens Horoskop'
     sender_alias: 'Dina Dagliga Horoskop'
-    recipients:
 
 horoscopes:
     - website_name: 'Twice'

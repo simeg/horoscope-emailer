@@ -3,30 +3,29 @@
 import emailer
 import requester
 import templater
-
-import yaml
+import config_handler as cfgh
 
 
 def run():
-    config = _get_config()
+    config = cfgh.get_default_config()
 
     horoscopes = requester.get_horoscopes(config.get('horoscopes'))
     html_email = templater.build(horoscopes)
 
+    password = cfgh.get_prod_variable_else_dev('PASSWORD')
+    username = cfgh.get_prod_variable_else_dev('USERNAME')
+    raw_recipients = cfgh.get_prod_variable_else_dev('RECIPIENTS')
+    recipients = raw_recipients.split(',')
+
     emailer.send(
-        config.get('auth').get('password'),
-        config.get('auth').get('username'),
+        password,
+        username,
         config.get('email').get('sender_alias'),
-        config.get('email').get('recipients'),
+        recipients,
         config.get('email').get('subject'),
         html_email)
 
     print 'Application execution finished'
-
-
-def _get_config():
-    with open('src/config.yaml', 'r') as cfg_file:
-        return yaml.load(cfg_file)
 
 
 if __name__ == '__main__':
