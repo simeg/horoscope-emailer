@@ -14,4 +14,4 @@ COPY requirements.txt ./requirements.txt
 
 RUN pip install -r ./requirements.txt
 
-ENTRYPOINT ["python", "/src/app.py"]
+CMD ["python", "/src/app.py"]
