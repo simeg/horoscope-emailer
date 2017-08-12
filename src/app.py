@@ -19,6 +19,7 @@ def run():
         config.email.get('subject'),
         html_email)
 
+    print 'Application execution finished'
 
 if __name__ == '__main__':
     run()

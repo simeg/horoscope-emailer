@@ -5,11 +5,13 @@ import requests
 
 
 def get_horoscopes(horoscope_paths):
+    print 'Fetching horoscopes'
     result = map(lambda hs: _create_horoscope(hs), horoscope_paths)
 
     if not result or None in result:
         raise NoHoroscopesFoundError
 
+    print 'Completed fetching horoscopes'
     return result
 
 

@@ -5,6 +5,7 @@ HEADER = 'Dagens horoskop för stjärntecknet Vattumanen'
 
 
 def build(horoscopes):
+    print 'Building e-mail template'
     i = 0
     size = len(horoscopes)
     template = _format_header(HEADER)
@@ -20,6 +21,7 @@ def build(horoscopes):
             template += '<hr/>'
         i += 1
 
+    print 'Completed building e-mail template'
     return template
 
 
