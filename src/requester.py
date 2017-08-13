@@ -16,24 +16,33 @@ def get_horoscopes(horoscope_paths):
 
 
 def _create_horoscope(hs):
-    url = requests.get(hs.get('website_url'))
-    tree = html.fromstring(url.content)
-    # Let's see if this "generic" way works with all websites
-    xpath = tree.xpath(hs.get('text_xpath'))
+    try:
+        url = requests.get(hs.get('website_url'))
+        tree = html.fromstring(url.content)
+        # Let's see if this "generic" way works with all websites
+        xpath = tree.xpath(hs.get('text_xpath'))
 
-    if not xpath:
+        if not xpath:
+            return None
+
+        # Always get the first one, even though
+        # the horoscope might be spread out over
+        # multiple elements
+        # TODO: Support multiple elements
+        result = xpath[0].text
+
+        if not result:
+            return None
+
+        return {
+            'website_name': hs.get('website_name'),
+            'website_url': hs.get('website_url'),
+            'result': result
+        }
+
+    except Exception:
+        print 'Something went wrong when parsing the following horoscope=[' + str(hs) + ']'
         return None
-
-    result = xpath[0].text
-
-    if not result:
-        return None
-
-    return {
-        'website_name': hs.get('website_name'),
-        'website_url': hs.get('website_url'),
-        'result': result
-    }
 
 
 class NoHoroscopesFoundError(Exception):
