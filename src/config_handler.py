@@ -6,7 +6,7 @@ import yaml
 isProduction = bool(os.environ.get('IS_PRODUCTION', False))
 
 
-def get_prod_variable_else_dev(config_var):
+def get(config_var):
     return os.environ.get(config_var) if isProduction \
         else _get_private_config().get(config_var)
 

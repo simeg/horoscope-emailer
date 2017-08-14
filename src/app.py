@@ -12,9 +12,9 @@ def run():
     horoscopes = requester.get_horoscopes(config.get('horoscopes'))
     html_email = templater.build(horoscopes)
 
-    password = cfgh.get_prod_variable_else_dev('PASSWORD')
-    username = cfgh.get_prod_variable_else_dev('USERNAME')
-    raw_recipients = cfgh.get_prod_variable_else_dev('RECIPIENTS')
+    password = cfgh.get('PASSWORD')
+    username = cfgh.get('USERNAME')
+    raw_recipients = cfgh.get('RECIPIENTS')
     recipients = raw_recipients.split(',')
 
     emailer.send(
