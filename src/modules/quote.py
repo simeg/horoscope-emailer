@@ -16,9 +16,6 @@ def get():
             quote_dict = res_json.get('contents').get('quotes')[0]
 
             quote = quote_dict.get('quote')
-            # The API is not trimming the output as
-            # it should so we have to do it here
-            quote = quote.strip()
             author = quote_dict.get('author')
             link = quote_dict.get('permalink')
 
