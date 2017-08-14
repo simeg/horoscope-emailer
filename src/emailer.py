@@ -11,7 +11,7 @@ def send(password, username, sender_alias, recipients, subject, content):
     yag = yagmail.SMTP({username: sender_alias}, password)
     send_result = yag.send(recipients, subject, content)
 
-    if send_result == False:
+    if send_result is False:
         logger.info('Was unable to send email, not sure why')
     else:
         logger.info('Email successfully sent')
