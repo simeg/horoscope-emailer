@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def get_horoscopes(horoscope_paths):
+def get(horoscope_paths):
     logger.info('Fetching horoscopes')
     result = map(lambda hs: _create_horoscope(hs), horoscope_paths)
 

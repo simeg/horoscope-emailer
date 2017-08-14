@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
-import emailer
-import requester
-import templater
-import config_handler as cfgh
 import logging
+
+import config_handler as cfgh
+import emailer
+import templater
+
+from modules import horoscopes as hs
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -13,7 +15,7 @@ logger = logging.getLogger(__name__)
 def run():
     config = cfgh.get_default_config()
 
-    horoscopes = requester.get_horoscopes(config.get('horoscopes'))
+    horoscopes = hs.get(config.get('horoscopes'))
     html_email = templater.build(horoscopes)
 
     password = cfgh.get('PASSWORD')
