@@ -5,17 +5,18 @@ import emailer
 import logging
 import templater
 
-from modules import horoscopes as hs
+from modules import horoscopes as mod_hs
+from modules import quote as mod_q
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 def run():
+    logger.info('Initiated It\'s Everyday Post')
     config = cfgh.default_config()
 
-    horoscopes = hs.get(config.get('horoscopes'))
-    html_email = templater.build(horoscopes)
+    email = _build_email(config.get('horoscopes'))
 
     password = cfgh.get('PASSWORD')
     username = cfgh.get('USERNAME')
@@ -28,9 +29,15 @@ def run():
         config.get('email').get('sender_alias'),
         recipients,
         config.get('email').get('subject'),
-        html_email)
+        email)
 
-    logger.info('Application execution finished')
+    logger.info('It\'s Everyday Post execution finished')
+
+
+def _build_email(horoscopes):
+    horoscopes = mod_hs.get(horoscopes)
+    quote = mod_q.get()
+    return templater.build(horoscopes=horoscopes, quote=quote)
 
 
 if __name__ == '__main__':
