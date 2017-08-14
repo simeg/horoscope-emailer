@@ -2,16 +2,19 @@
 
 from lxml import html
 import requests
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def get_horoscopes(horoscope_paths):
-    print 'Fetching horoscopes'
+    logger.info('Fetching horoscopes')
     result = map(lambda hs: _create_horoscope(hs), horoscope_paths)
 
     if not result or None in result:
         raise NoHoroscopesFoundError
 
-    print 'Completed fetching horoscopes'
+    logger.info('Completed fetching horoscopes')
     return result
 
 
@@ -41,7 +44,7 @@ def _create_horoscope(hs):
         }
 
     except Exception:
-        print 'Something went wrong when parsing the following horoscope=[' + str(hs) + ']'
+        logger.info('Something went wrong when parsing the following horoscope=[' + str(hs) + ']')
         return None
 
 

@@ -4,6 +4,10 @@ import emailer
 import requester
 import templater
 import config_handler as cfgh
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def run():
@@ -25,7 +29,7 @@ def run():
         config.get('email').get('subject'),
         html_email)
 
-    print 'Application execution finished'
+    logger.info('Application execution finished')
 
 
 if __name__ == '__main__':
