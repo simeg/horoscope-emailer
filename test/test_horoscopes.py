@@ -6,6 +6,12 @@ from src import templater
 from src import config_handler as cfgh
 from src.modules import horoscopes as hs
 
+'''
+TODO: Mock responses, do not actually get the horoscopes for each test.
+      It takes a lot of time and unnecessary processing power, look at tests
+      for quotes.
+'''
+
 
 def test_website_names_included_in_template():
     hs_config = _get_hs_config()
