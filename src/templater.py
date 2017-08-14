@@ -5,7 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-HEADER = 'Dagens horoskop för stjärntecknet Vattumanen'
+HEADER = 'It\'s Everyday Post'
 
 
 def build(horoscopes):
