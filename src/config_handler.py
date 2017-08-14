@@ -3,11 +3,11 @@
 import os
 import yaml
 
-isProduction = bool(os.environ.get('IS_PRODUCTION', failobj=False))
+is_production = bool(os.environ.get('IS_PRODUCTION', failobj=False))
 
 
 def get(key):
-    return os.environ.get(key) if isProduction \
+    return os.environ.get(key) if is_production \
         else _private_config().get(key)
 
 
