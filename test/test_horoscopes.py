@@ -52,7 +52,7 @@ def test_divider_count():
 def _get_built_email():
     hs_config = _get_hs_config()
     horoscopes = hs.get(hs_config)
-    html_email = templater.build(horoscopes)
+    html_email = templater.build(horoscopes, None)
     return html_email
 
 
