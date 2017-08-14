@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 def run():
-    config = cfgh.get_default_config()
+    config = cfgh.default_config()
 
     horoscopes = hs.get(config.get('horoscopes'))
     html_email = templater.build(horoscopes)
