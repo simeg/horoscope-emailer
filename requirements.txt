@@ -4,3 +4,4 @@ yagmail==0.9.179
 pyyaml
 pytest
 pep8
+responses
