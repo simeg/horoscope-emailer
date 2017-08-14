@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 
-import logging
-
 import config_handler as cfgh
 import emailer
+import logging
 import templater
 
 from modules import horoscopes as hs
