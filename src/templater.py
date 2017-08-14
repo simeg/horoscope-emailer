@@ -39,5 +39,5 @@ def _build_header(header):
 
 
 def _build_hs_line(name, website, horoscope):
-    return '<h3><a href="' + website + '">' + name + '</a></h3><p>' + horoscope + '</p>\n' \
-        .encode('utf-8')
+    return '<h3><a href="' + website + '">' + name + '</a></h3><p>' \
+           + horoscope + '</p>\n'.encode('utf-8')
