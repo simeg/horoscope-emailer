@@ -5,12 +5,10 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-HEADER = 'It\'s Everyday Post'
-
 
 def build(horoscopes, quote):
     logger.info('Start building email')
-    template = _build_header(HEADER)
+    template = ''
 
     if quote:
         template = _build_quote(template, quote)
@@ -19,10 +17,6 @@ def build(horoscopes, quote):
 
     logger.info('Completed building email')
     return template
-
-
-def _build_header(header):
-    return '<h2>{}</h2>\n'.format(header)
 
 
 def _build_quote(template, quote):

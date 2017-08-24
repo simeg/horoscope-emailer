@@ -7,14 +7,6 @@ from src import templater
 
 
 class TestCases(unittest.TestCase):
-    def test_build_header(self):
-        header = templater._build_header('arbitrary')
-        assert header == '<h2>arbitrary</h2>\n'
-
-    def test_build_header_with_unicode_input(self):
-        header = templater._build_header('åäö-string')
-        assert header == '<h2>åäö-string</h2>\n'
-
     def test_build_quote(self):
         quote = {
             'link': 'http://arb-domain.com',
@@ -102,9 +94,8 @@ class TestCases(unittest.TestCase):
         ]
         actual = templater.build(horoscopes, None)
 
-        expected = '<h2>It\'s Everyday Post</h2>\n<h3>' \
-                   '<a href="http://arb-domain-1.com">arbitrary-name-1</a>' \
-                   '</h3><p>arbitrary-horoscope-1</p><hr/><h3>' \
+        expected = '<h3><a href="http://arb-domain-1.com">arbitrary-name-1' \
+                   '</a></h3><p>arbitrary-horoscope-1</p><hr/><h3>' \
                    '<a href="http://arb-domain-2.com">arbitrary-name-2</a>' \
                    '</h3><p>arbitrary-horoscope-2</p>'
 
