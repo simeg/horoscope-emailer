@@ -22,14 +22,24 @@ def build(horoscopes, quote):
 
 
 def _build_header(header):
-    return '<h2>' + header.encode('utf-8') + '</h2>\n'
+    return '<h2>{}</h2>\n'.format(header)
+
+
+def _build_quote(template, quote):
+    return template + '<h3><a href="{}">Dagens Citat</a></h3>' \
+                      '<p>{}</p>' \
+                      '<i>- {}</i>' \
+                      '\n\n<hr/>' \
+        .format(quote.get('link'),
+                quote.get('quote'),
+                quote.get('author'))
 
 
 def _build_horoscopes(template, horoscopes):
     i = 0
     size = len(horoscopes)
     for hs in horoscopes:
-        template += _build_hs_row(
+        template += _build_horoscope_row(
             hs.get('website_name'),
             hs.get('website_url'),
             hs.get('result')
@@ -42,17 +52,9 @@ def _build_horoscopes(template, horoscopes):
     return template
 
 
-def _build_quote(template, quote):
-    return template + '<h3><a href="{}">Dagens Citat</a></h3>' \
-                      '<p>{}</p>' \
-                      '<i>- {}</i>' \
-                      '\n\n<hr/>' \
-        .format(quote.get('link').encode('utf-8'),
-                quote.get('quote').encode('utf-8'),
-                quote.get('author').encode('utf-8'))
-
-
-def _build_hs_row(name, website, horoscope):
-    return '<h3><a href="' + website.encode('utf-8') + '">' \
-           + name.encode('utf-8') + '</a></h3><p>' \
-           + horoscope.encode('utf-8') + '</p>'
+def _build_horoscope_row(name, website, horoscope):
+    return '<h3>' \
+           '<a href="{}">{}</a>' \
+           '</h3>' \
+           '<p>{}</p>' \
+        .format(website, name, horoscope)
