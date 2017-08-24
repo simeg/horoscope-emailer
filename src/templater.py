@@ -22,7 +22,7 @@ def build(horoscopes, quote):
 
 
 def _build_header(header):
-    return '<h2>' + header + '</h2>\n'.encode('utf-8')
+    return '<h2>' + header.encode('utf-8') + '</h2>\n'
 
 
 def _build_horoscopes(template, horoscopes):
@@ -33,7 +33,7 @@ def _build_horoscopes(template, horoscopes):
             hs.get('website_name'),
             hs.get('website_url'),
             hs.get('result')
-        ).encode('utf-8')
+        )
 
         # Output a divider between every horoscope
         if i != (size - 1):
@@ -46,10 +46,13 @@ def _build_quote(template, quote):
     return template + '<h3><a href="{}">Dagens Citat</a></h3>' \
                       '<p>{}</p>' \
                       '<i>- {}</i>' \
-                      '\n\n<hr/>'.encode('utf-8') \
-        .format(quote.get('link'), quote.get('quote'), quote.get('author'))
+                      '\n\n<hr/>' \
+        .format(quote.get('link').encode('utf-8'),
+                quote.get('quote').encode('utf-8'),
+                quote.get('author').encode('utf-8'))
 
 
 def _build_hs_row(name, website, horoscope):
-    return '<h3><a href="' + website + '">' + name + '</a></h3><p>' \
-           + horoscope + '</p>'.encode('utf-8')
+    return '<h3><a href="' + website.encode('utf-8') + '">' \
+           + name.encode('utf-8') + '</a></h3><p>' \
+           + horoscope.encode('utf-8') + '</p>'
