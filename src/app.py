@@ -16,7 +16,7 @@ def run():
     logger.info('Initiated It\'s Everyday Post')
     config = cfgh.default_config()
 
-    email = _build_email(config.get('horoscopes'))
+    email_body = _build_email(config.get('horoscopes'))
 
     password = cfgh.get('PASSWORD')
     username = cfgh.get('USERNAME')
@@ -29,7 +29,8 @@ def run():
         config.get('email').get('sender_alias'),
         recipients,
         config.get('email').get('subject'),
-        email)
+        email_body,
+        cfgh.is_production)
 
     logger.info('It\'s Everyday Post execution finished')
 
