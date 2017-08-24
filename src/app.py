@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 
-import config_handler as cfgh
-import emailer
 import logging
-import templater
 
-from modules import horoscopes as mod_hs
-from modules import quote as mod_q
+from src import config_handler as cfgh, emailer, templater
+from src.modules import horoscopes as horoscopes_module, quote as quote_module
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -36,8 +33,8 @@ def run():
 
 
 def _build_email(horoscopes):
-    horoscopes = mod_hs.get(horoscopes)
-    quote = mod_q.get()
+    horoscopes = horoscopes_module.get(horoscopes)
+    quote = quote_module.get()
     return templater.build(horoscopes=horoscopes, quote=quote)
 
 
