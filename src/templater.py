@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+# coding=utf-8
 
 import logging
 
@@ -24,9 +24,9 @@ def _build_quote(template, quote):
                       '<p>{}</p>' \
                       '<i>- {}</i>' \
                       '\n\n<hr/>' \
-        .format(quote.get('link'),
-                quote.get('quote'),
-                quote.get('author'))
+        .format(_encode(quote.get('link')),
+                _encode(quote.get('quote')),
+                _encode(quote.get('author')))
 
 
 def _build_horoscopes(template, horoscopes):
@@ -51,4 +51,10 @@ def _build_horoscope_row(name, website, horoscope):
            '<a href="{}">{}</a>' \
            '</h3>' \
            '<p>{}</p>' \
-        .format(website, name, horoscope)
+        .format(_encode(website),
+                _encode(name), 
+                _encode(horoscope))
+
+
+def _encode(string):
+    return string.encode('utf-8', 'ignore')
