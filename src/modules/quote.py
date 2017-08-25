@@ -27,7 +27,7 @@ def get():
                     'link': link,
                 }
             else:
-                logger.warn(
+                logger.warning(
                     'Response from Quote API is missing data, '
                     'quote=[%s] author=[%s] link=[%s] '
                     'and entire response=[%s]',
@@ -35,12 +35,12 @@ def get():
                 return None
 
         except ValueError:
-            logger.warn(
+            logger.warning(
                 'Response from Quote API is not valid JSON=[%s]', str(res))
             return None
 
     else:
-        logger.warn(
+        logger.warning(
             'Invalid response from Quote API with status code=[%d] '
             'and response=[%s]',
             res.status_code, res.json())
