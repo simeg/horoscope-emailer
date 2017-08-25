@@ -52,7 +52,7 @@ def _build_horoscope_row(name, website, horoscope):
            '</h3>' \
            '<p>{}</p>' \
         .format(_encode(website),
-                _encode(name), 
+                _encode(name),
                 _encode(horoscope))
 
 

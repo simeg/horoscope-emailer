@@ -2,7 +2,6 @@
 
 import yagmail
 import logging
-import config_handler as cfgh
 
 logger = logging.getLogger(__name__)
 

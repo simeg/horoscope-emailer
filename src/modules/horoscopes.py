@@ -43,9 +43,9 @@ def _create_horoscope(hs):
             'result': result
         }
 
-    except Exception:
-        logger.info('Something went wrong when parsing the following'
-                    ' horoscope=[' + str(hs) + ']')
+    except Exception as e:
+        logger.warning('Unable to parse horoscope=[%s]', str(hs))
+        logger.exception(e)
         return None
 
 
