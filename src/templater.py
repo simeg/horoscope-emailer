@@ -24,9 +24,9 @@ def _build_quote(template, quote):
                       '<p>{}</p>' \
                       '<i>- {}</i>' \
                       '\n\n<hr/>' \
-        .format(_encode(quote.get('link')),
-                _encode(quote.get('quote')),
-                _encode(quote.get('author')))
+        .format(quote.get('link'),
+                quote.get('quote'),
+                quote.get('author'))
 
 
 def _build_horoscopes(template, horoscopes):
@@ -34,8 +34,8 @@ def _build_horoscopes(template, horoscopes):
     size = len(horoscopes)
     for hs in horoscopes:
         template += _build_horoscope_row(
-            hs.get('website_name'),
             hs.get('website_url'),
+            hs.get('website_name'),
             hs.get('result')
         )
 
@@ -46,15 +46,9 @@ def _build_horoscopes(template, horoscopes):
     return template
 
 
-def _build_horoscope_row(name, website, horoscope):
+def _build_horoscope_row(url, name, horoscope):
     return '<h3>' \
            '<a href="{}">{}</a>' \
            '</h3>' \
            '<p>{}</p>' \
-        .format(_encode(website),
-                _encode(name),
-                _encode(horoscope))
-
-
-def _encode(string):
-    return string.encode('utf-8', 'ignore')
+        .format(url, name, horoscope)
