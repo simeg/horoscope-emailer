@@ -3,7 +3,7 @@
 import os
 import yaml
 
-is_production = bool(os.environ.get('IS_PRODUCTION', default=False))
+is_production = bool(os.environ.get('IS_PRODUCTION', False))
 
 
 def get(key):
