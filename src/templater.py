@@ -11,9 +11,14 @@ def build(horoscopes, quote):
     template = ''
 
     if quote:
+        logger.info('Start building quote')
         template = _build_quote(template, quote)
+        logger.info('Completed building quote')
     if horoscopes:
+        logger.info(
+            'Start building horoscopes for [%s] horoscopes', len(horoscopes))
         template = _build_horoscopes(template, horoscopes)
+        logger.info('Completed building horoscopes')
 
     logger.info('Completed building email')
     return template
