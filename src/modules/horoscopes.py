@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 def get(horoscope_paths):
     logger.info('Fetching horoscopes')
-    result = map(lambda hs: _create_horoscope(hs), horoscope_paths)
-    result = filter(lambda ele: ele is not None, result)
+    result = list(map(lambda hs: _create_horoscope(hs), horoscope_paths))
+    result = list(filter(lambda ele: ele is not None, result))
 
     if not result:
         raise NoHoroscopesFoundError
