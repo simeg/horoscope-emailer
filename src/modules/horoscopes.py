@@ -15,7 +15,7 @@ def get(horoscope_paths):
     if not result:
         raise NoHoroscopesFoundError
 
-    logger.info('Completed fetching horoscopes')
+    logger.info('Completed fetching horoscopes, found [%s]', len(result))
     return tuple(result)
 
 
